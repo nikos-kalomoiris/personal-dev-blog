@@ -6,8 +6,8 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
+import Customheader from '../../components/CustomElements/CustomHeader'
 import CustomLink from '../../components/CustomLink'
-import Layout from '../../components/Layout'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 // Custom components/renderers to pass to MDX.
@@ -25,7 +25,7 @@ const components = {
 
 export default function PostPage({ source, frontMatter }) {
   return (
-    <Layout>
+    <div className="app-container">
       <header>
         <nav>
           <Link href="/">
@@ -40,9 +40,9 @@ export default function PostPage({ source, frontMatter }) {
         )}
       </div>
       <main>
-        <MDXRemote {...source} className="prose" components={components} />
+        <MDXRemote {...source} components={components} />
       </main>
-    </Layout>
+    </div>
   )
 }
 
