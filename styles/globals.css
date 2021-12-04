@@ -4,20 +4,28 @@
 
 @layer base {
     h1 {
-        @apply text-5xl mb-6
+        @apply text-5xl
     }
 
     h2 {
+        @apply text-3xl
+    }
+
+    h3 {
+        @apply text-2xl
+    }
+
+    h4 {
         @apply text-xl
     }
 
     p {
-        @apply text-base mb-7
+        @apply text-base
     }
 }
 
 @layer components {
     .app-container {
-        @apply md:w-2/5 sm:w-3/5 mx-auto p-6
+        @apply max-w-6xl mx-auto p-6
     }
 }
