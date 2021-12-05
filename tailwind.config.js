@@ -5,7 +5,13 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        react: '#61DAFB',
+        vue: '#42B983',
+        javascript: '#FCDC00'
+      }
+    },
     screens: {
       'xs': '100px',
       sm: '478px',

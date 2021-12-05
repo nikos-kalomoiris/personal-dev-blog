@@ -8,6 +8,7 @@ import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/CustomLink'
 import CustomH1 from '../../components/Posts/Post/CustomHtmlTags/CustomH1'
+import Postsidebar from '../../components/Posts/Post/PostSidebar'
 import Tag from '../../components/Shared/Sidebar/Tag'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
@@ -29,40 +30,37 @@ export default function PostPage({ source, frontMatter }) {
 	const tags = getTags(frontMatter.tags)
 	console.log(tags)
 	return (
-		<div>
-			<header>
-				<nav>
-					<Link href="/">
-						<a>👈 Go back home</a>
-					</Link>
-				</nav>
-			</header>
-			<div className="post-header">
-				<h1>{frontMatter.title}</h1>
-				{frontMatter.description && (
-					<p className="description">{frontMatter.description}</p>
-				)}
-				<div className='flex p-4'>
-					{tags && tags.map(tag => (
-						<Tag tag={tag} />
-					))}
-				</div>
+		<div className="flex single-post-container">
+			<div className="bg-white drop-shadow-md mr-4 w-3/4">
+				<header className="px-16 pt-8">
+					<h1 className="font-bold">{frontMatter.title}</h1>
+					<div className='flex pt-6'>
+						{tags && tags.map(tag => (
+							<Tag tag={tag} />
+						))}
+					</div>
+				</header>	
+				<main className="px-16 py-8">
+					<MDXRemote {...source} components={components} />
+				</main>
 			</div>
-			<main>
-				<MDXRemote {...source} components={components} />
-			</main>
+			<div className="bg-white drop-shadow-md w-1/4">
+				<Postsidebar />
+			</div>
 		</div>
 	)
 }
 
 function getTags(tags) {
-	let tagsArray = tags.split(',')
-	return tagsArray.map(tag => {
-		return {
-			'text': tag,
-			'bgColor': 'bg-green-400'
-		}
-	})
+	if(tags) {
+		let tagsArray = tags.split(',')
+		return tagsArray.map(tag => {
+			return {
+				'text': tag,
+				'bgColor': 'bg-green-400'
+			}
+		})
+	}
 }
 
 export const getStaticProps = async ({ params }) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import PostListComponent from './Post/PostListComponent';
 
 const RecentPosts = ({ posts }) => {
+
     return (
         <div>
             <h2 className="mb-6">Recent Posts</h2>

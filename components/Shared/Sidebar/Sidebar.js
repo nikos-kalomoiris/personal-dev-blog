@@ -1,10 +1,10 @@
 import React from 'react';
 import Tagscomponent from './TagsComponent';
 
-const Sidebar = () => {
+const Sidebar = ({ tags }) => {
     return (
         <div>
-            <Tagscomponent />
+            <Tagscomponent tags={tags}/>
         </div>
     );
 }
