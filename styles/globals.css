@@ -22,10 +22,14 @@
     p {
         @apply text-base
     }
+
+    body {
+        @apply bg-gray-300
+    }
 }
 
 @layer components {
     .app-container {
-        @apply max-w-6xl mx-auto p-6
+        @apply max-w-6xl mx-auto p-6 my-3 rounded-lg bg-white drop-shadow-md
     }
 }

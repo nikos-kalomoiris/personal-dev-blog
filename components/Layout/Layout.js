@@ -4,8 +4,7 @@ import Header from '../Shared/Header/Header';
 const Layout = ({ children }) => {
     return (
         <>
-            {/* <Header /> */}
-            <div>
+            <div className="app-container">
                 {children}
             </div>
         </>

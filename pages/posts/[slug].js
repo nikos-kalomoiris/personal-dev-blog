@@ -7,6 +7,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/CustomLink'
+import CustomH1 from '../../components/Posts/Post/CustomHtmlTags/CustomH1'
+import Tag from '../../components/Shared/Sidebar/Tag'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 // Custom components/renderers to pass to MDX.
@@ -15,16 +17,19 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 // here.
 const components = {
 	a: CustomLink,
+	h1: CustomH1,
 	// It also works with dynamically-imported components, which is especially
 	// useful for conditionally loading components for certain routes.
 	// See the notes in README.md for more details.
-	TestComponent: dynamic(() => import('../../components/TestComponent')),
+	// TestComponent: dynamic(() => import('../../components/TestComponent')),
 	Head,
 }
 
 export default function PostPage({ source, frontMatter }) {
+	const tags = getTags(frontMatter.tags)
+	console.log(tags)
 	return (
-		<div className="app-container">
+		<div>
 			<header>
 				<nav>
 					<Link href="/">
@@ -37,12 +42,27 @@ export default function PostPage({ source, frontMatter }) {
 				{frontMatter.description && (
 					<p className="description">{frontMatter.description}</p>
 				)}
+				<div className='flex p-4'>
+					{tags && tags.map(tag => (
+						<Tag tag={tag} />
+					))}
+				</div>
 			</div>
 			<main>
 				<MDXRemote {...source} components={components} />
 			</main>
 		</div>
 	)
+}
+
+function getTags(tags) {
+	let tagsArray = tags.split(',')
+	return tagsArray.map(tag => {
+		return {
+			'text': tag,
+			'bgColor': 'bg-green-400'
+		}
+	})
 }
 
 export const getStaticProps = async ({ params }) => {
