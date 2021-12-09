@@ -7,9 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        react: '#61DAFB',
-        vue: '#42B983',
-        javascript: '#FCDC00'
+        'react': '#61DAFB',
+        'vue': '#42B983',
+        'javascript': '#FCDC00',
+        'blockchain': '#000000'
       }
     },
     screens: {

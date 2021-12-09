@@ -12,11 +12,11 @@ export const TagsMap = [
     {
         text: "Javascript",
         bgColor: "javascript",
-        icon: ["fab", "fajs"]
+        icon: ["fab", "js"]
     },
     {
         text: "Blockchain",
-        bgColor: "",
-        icon: ["fab", "react"]
+        bgColor: "blockchain",
+        icon: ["fas", "cubes"]
     },
 ]
