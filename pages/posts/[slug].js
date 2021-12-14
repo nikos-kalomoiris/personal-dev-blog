@@ -28,7 +28,6 @@ const components = {
 
 export default function PostPage({ source, frontMatter }) {
 	const tags = getTags(frontMatter.tags)
-	console.log(tags)
 	return (
 		<div className="flex single-post-container">
 			<div className="bg-white drop-shadow-md mr-4 w-3/4">
