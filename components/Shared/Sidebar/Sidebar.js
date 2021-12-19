@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Tagscomponent from './TagsComponent';
 
-const Sidebar = ({ tags }) => {
+
+const Sidebar = ({ tags, onTagSelection }) => {
     return (
         <div>
-            <Tagscomponent tags={tags}/>
+            <Tagscomponent tags={tags} onTagSelection={onTagSelection}/>
         </div>
     );
 }

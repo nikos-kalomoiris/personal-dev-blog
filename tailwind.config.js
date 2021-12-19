@@ -3,13 +3,14 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   mode: 'jit',
   purge: {
-    safelist: ['bg-react', 'bg-vue', 'bg-javascript', 'bg-blockchain'],
+    safelist: ['bg-react', 'bg-vue', 'bg-javascript', 'bg-blockchain', 'bg-default'],
     content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
+        default: '#4c4c4c',
         react: '#61DAFB',
         vue: '#42B983',
         javascript: '#FCDC00',

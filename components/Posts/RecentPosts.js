@@ -1,7 +1,7 @@
 import React from 'react';
 import PostListComponent from './Post/PostListComponent';
 
-const RecentPosts = ({ posts }) => {
+const RecentPosts = ({ posts, tags }) => {
 
     return (
         <div>
@@ -9,7 +9,7 @@ const RecentPosts = ({ posts }) => {
             <ul>
                 {posts.map((post) => (
                 <li key={post.filePath}>
-                    <PostListComponent post={ post }/>
+                    <PostListComponent post={ post } tags={ tags }/>
                 </li>
                 ))}
             </ul>

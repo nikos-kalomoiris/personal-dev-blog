@@ -30,7 +30,7 @@
 
 @layer components {
     .app-container {
-        @apply max-w-6xl mx-auto my-3 md:px-16 md:py-8 xs:px-8 xs:py-8 rounded-lg bg-white drop-shadow-md
+        @apply max-w-6xl mx-auto my-3 md:px-16 md:py-8 xs:px-8 xs:py-8 rounded-lg bg-white drop-shadow-md min-h-screen
     }
     .single-post-container {
         @apply max-w-6xl mx-auto p-6 rounded-lg

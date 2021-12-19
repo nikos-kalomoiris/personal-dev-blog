@@ -19,4 +19,9 @@ export const TagsMap = [
         bgColor: "blockchain",
         icon: ["fas", "cubes"]
     },
+    {
+        text: "Gaming",
+        bgColor: "vue",
+        icon: ["fas", "cubes"]
+    }
 ]
