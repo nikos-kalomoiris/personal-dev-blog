@@ -43,6 +43,8 @@ export default function Index({ posts }) {
 			return mapTagsOptions(tag)
 		}).filter(el => el !== undefined)
 
+		console.log(tmpTagsArray)
+
 		return tmpTagsArray
 	}
 
@@ -55,17 +57,15 @@ export default function Index({ posts }) {
     }
 
 	const onTagSelectionHandler = (tagsSelected) => {
-		setCurrentTag(tagsSelected.text)
+		if(tagsSelected.text !== currentTag)
+			setCurrentTag(tagsSelected.text)
+		else
+			setCurrentTag("all")
 	}
 
 	useEffect(() => (
 		setTags(exportPostsTags(posts))
 	), [])
-
-	useEffect(() => {
-		currentTag ? console.log(currentTag.text): console.log("null")
-	},[currentTag])
-
 
 	useEffect(() => {
 		if(currentTag !== "all") {
@@ -97,10 +97,10 @@ export default function Index({ posts }) {
 			<h4 className="mb-6">Nick Kalomoiris dev blog.</h4>
 			<div className="flex justify-between md:flex-nowrap sm:flex-wrap-reverse xs:flex-wrap-reverse">
 				<div className="md:w-1/3 sm:w-full xs:w-full">
-					<Sidebar tags={tags} onTagSelection={onTagSelectionHandler}/>
+					<Sidebar tags={tags} onTagSelection={onTagSelectionHandler} currentTag={currentTag}/>
 				</div>
 				<div className="md:w-2/3 sm:w-full xs:w-full md:ml-8">
-					<RecentPosts posts={currentPosts} tags={tags} />
+					<RecentPosts posts={currentPosts} tags={tags} currentTag={currentTag}/>
 				</div>
 			</div>
 		</div>
