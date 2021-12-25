@@ -2,14 +2,14 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import Link from 'next/link'
-import path from 'path'
+import path, { format } from 'path'
 import CustomLink from '../../components/CustomLink'
+import DateComponent from '../../components/Posts/Date/DateComponent'
 import CustomH1 from '../../components/Posts/Post/CustomHtmlTags/CustomH1'
-import Postsidebar from '../../components/Posts/Post/PostSidebar'
-import Tag from '../../components/Shared/Sidebar/Tag'
+import CustomH2 from '../../components/Posts/Post/CustomHtmlTags/CustomH2'
+import CustomH3 from '../../components/Posts/Post/CustomHtmlTags/CustomH3'
+import CustomParagraph from '../../components/Posts/Post/CustomHtmlTags/CustomParagraph'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 // Custom components/renderers to pass to MDX.
@@ -19,32 +19,33 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 const components = {
 	a: CustomLink,
 	h1: CustomH1,
-	// It also works with dynamically-imported components, which is especially
-	// useful for conditionally loading components for certain routes.
-	// See the notes in README.md for more details.
-	// TestComponent: dynamic(() => import('../../components/TestComponent')),
+	h2: CustomH2,
+	h3: CustomH3,
+	p: CustomParagraph,
 	Head,
 }
 
 export default function PostPage({ source, frontMatter }) {
 	const tags = getTags(frontMatter.tags)
+
 	return (
 		<div className="flex single-post-container">
 			<div className="bg-white drop-shadow-md mr-4 w-3/4">
 				<header className="px-16 pt-8">
 					<h1 className="font-bold">{frontMatter.title}</h1>
+					<DateComponent date={frontMatter.date} />
 					<div className='flex pt-6'>
-						{tags && tags.map(tag => (
-							<Tag tag={tag} />
+						{tags && tags.map((tag, index) => (
+							<div className="flex flex-row mr-2" key={index}>
+								<p className="text-green-400">#</p>
+								<span>{tag.text.trim()}</span>
+							</div>
 						))}
 					</div>
 				</header>	
 				<main className="px-16 py-8">
 					<MDXRemote {...source} components={components} />
 				</main>
-			</div>
-			<div className="bg-white drop-shadow-md w-1/4">
-				<Postsidebar />
 			</div>
 		</div>
 	)
@@ -56,7 +57,6 @@ function getTags(tags) {
 		return tagsArray.map(tag => {
 			return {
 				'text': tag,
-				'bgColor': 'bg-green-400'
 			}
 		})
 	}
