@@ -43,8 +43,6 @@ export default function Index({ posts }) {
 			return mapTagsOptions(tag)
 		}).filter(el => el !== undefined)
 
-		console.log(tmpTagsArray)
-
 		return tmpTagsArray
 	}
 

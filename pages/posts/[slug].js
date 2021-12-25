@@ -63,8 +63,6 @@ function getTags(tags) {
 }
 
 export const getStaticProps = async ({ params }, context) => {
-	console.log("params: ")
-	console.log(params)
 	const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
 	const source = fs.readFileSync(postFilePath)
 
