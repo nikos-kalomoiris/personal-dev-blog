@@ -15,6 +15,9 @@ module.exports = {
         vue: '#42B983',
         javascript: '#FCDC00',
         blockchain: '#000000'
+      },
+      fontFamily: {
+		'montserrat': ["Ubuntu"]
       }
     },
     screens: {

@@ -31,11 +31,9 @@ const formatDay = (day) => {
     }
 }
 
-const DateComponent = ({ date }) => {
+const DateComponent = ({ date, className }) => {
     return (
-        <div>
-            <p className="mt-4">{formatDate(date)}</p>
-        </div>
+        <p className={"mt-4 " + className}>{formatDate(date)}</p>
     );
 }
 

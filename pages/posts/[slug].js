@@ -30,7 +30,7 @@ export default function PostPage({ source, frontMatter }) {
 
 	return (
 		<div className="flex single-post-container">
-			<div className="bg-white drop-shadow-md mr-4 w-3/4">
+			<div className="bg-white drop-shadow-md mr-4 w-3/4 rounded-tl-lg rounded-bl-lg">
 				<header className="px-16 pt-8">
 					<h1 className="font-bold">{frontMatter.title}</h1>
 					<DateComponent date={frontMatter.date} />
