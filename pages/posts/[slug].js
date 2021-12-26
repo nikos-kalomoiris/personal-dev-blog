@@ -4,12 +4,14 @@ import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import path, { format } from 'path'
+import { useEffect, useState } from 'react/cjs/react.development'
 import CustomLink from '../../components/CustomLink'
 import DateComponent from '../../components/Posts/Date/DateComponent'
 import CustomH1 from '../../components/Posts/Post/CustomHtmlTags/CustomH1'
 import CustomH2 from '../../components/Posts/Post/CustomHtmlTags/CustomH2'
 import CustomH3 from '../../components/Posts/Post/CustomHtmlTags/CustomH3'
 import CustomParagraph from '../../components/Posts/Post/CustomHtmlTags/CustomParagraph'
+import TableOfContents from '../../components/Posts/TableOfContents'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 // Custom components/renderers to pass to MDX.
@@ -25,8 +27,19 @@ const components = {
 	Head,
 }
 
-export default function PostPage({ source, frontMatter }) {
+export default function PostPage({ content, source, frontMatter }) {
 	const tags = getTags(frontMatter.tags)
+
+	function getTags(tags) {
+		if(tags) {
+			let tagsArray = tags.split(',')
+			return tagsArray.map(tag => {
+				return {
+					'text': tag,
+				}
+			})
+		}
+	}
 
 	return (
 		<div className="flex single-post-container">
@@ -47,22 +60,12 @@ export default function PostPage({ source, frontMatter }) {
 					<MDXRemote {...source} components={components} />
 				</main>
 			</div>
+			<TableOfContents />
 		</div>
 	)
 }
 
-function getTags(tags) {
-	if(tags) {
-		let tagsArray = tags.split(',')
-		return tagsArray.map(tag => {
-			return {
-				'text': tag,
-			}
-		})
-	}
-}
-
-export const getStaticProps = async ({ params }, context) => {
+export const getStaticProps = async ({ params }) => {
 	const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
 	const source = fs.readFileSync(postFilePath)
 
@@ -79,6 +82,7 @@ export const getStaticProps = async ({ params }, context) => {
 
 	return {
 		props: {
+			content: content,
 			source: mdxSource,
 			frontMatter: data,
 		},
