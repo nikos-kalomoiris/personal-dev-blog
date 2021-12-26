@@ -23,6 +23,10 @@
         @apply text-base
     }
 
+    li {
+        @apply text-base
+    }
+
     body {
         @apply bg-gray-300
     }

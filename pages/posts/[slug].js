@@ -7,6 +7,7 @@ import path, { format } from 'path'
 import { useEffect, useState } from 'react/cjs/react.development'
 import CustomLink from '../../components/CustomLink'
 import DateComponent from '../../components/Posts/Date/DateComponent'
+import CustomCode from '../../components/Posts/Post/CustomHtmlTags/CustomCode'
 import CustomH1 from '../../components/Posts/Post/CustomHtmlTags/CustomH1'
 import CustomH2 from '../../components/Posts/Post/CustomHtmlTags/CustomH2'
 import CustomH3 from '../../components/Posts/Post/CustomHtmlTags/CustomH3'
@@ -24,6 +25,7 @@ const components = {
 	h2: CustomH2,
 	h3: CustomH3,
 	p: CustomParagraph,
+	code: CustomCode,
 	Head,
 }
 
