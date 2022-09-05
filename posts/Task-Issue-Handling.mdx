@@ -1,0 +1,28 @@
+---
+title: Tasks
+description: We can use tools for integrating the ticketing system with version control, for a better developing experience. In case our ticketing system is different from the git repo hosting service (Github),
+---
+
+# Task Issue Handling
+
+We can use tools for integrating the ticketing system with version control, for a better developing experience. In case our ticketing system is different from the git repo hosting service (Github), the developer should update the issue with the hash of the commit that "closes" it, in the details of the issue. For example:
+
+```text
+commit: (commit hash)
+Author: (Name)
+Date:   (Date)
+       
+(Area of update/change) Title.
+
+Description
+```
+
+```text
+commit: 2fb109cb1a6c53f69c38cea38112617c1b3fcd64
+Author: Nick Kal
+Date:   Mon Jul 20 14:09:37 2021 +0300
+       
+(Frontend) Add contract interaction button.
+
+Added a new button
+```

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function CustomLink({ as, href, ...otherProps }) {
   return (
@@ -7,5 +7,5 @@ export default function CustomLink({ as, href, ...otherProps }) {
         <a className="text-pink-900" {...otherProps} />
       </Link>
     </>
-  )
+  );
 }
