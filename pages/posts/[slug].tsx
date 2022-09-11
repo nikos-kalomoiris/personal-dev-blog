@@ -46,11 +46,13 @@ export default function PostPage({ content, source, frontMatter }) {
   return (
     <div className="flex single-post-container">
       <TableOfContents />
-      <div className="bg-white drop-shadow-md mr-4 w-3/4 rounded-tl-lg rounded-lg">
-        <header className="px-16 pt-8">
-          <h1 className="font-bold">{frontMatter.title}</h1>
+      <div className="bg-white drop-shadow-md mx-0 w-full rounded-tl-lg rounded-lg md:ml-0 md:w-3/4">
+        <header className="px-8 pt-8 sm:px-16">
+          <h1 className="font-bold text-4xl sm:text-5xl">
+            {frontMatter.title}
+          </h1>
           <DateComponent date={frontMatter.date} />
-          <div className="flex pt-6">
+          <div className="flex flex-wrap pt-6">
             {tags &&
               tags.map((tag, index) => (
                 <div className="flex flex-row mr-2" key={index}>
@@ -60,7 +62,7 @@ export default function PostPage({ content, source, frontMatter }) {
               ))}
           </div>
         </header>
-        <main className="px-16 py-8">
+        <main className="px-8 pb-8 sm:px-16">
           <MDXRemote {...source} components={components} />
         </main>
       </div>

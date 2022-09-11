@@ -13,10 +13,10 @@ const DateComponent: FC<Props> = ({ date, className }) => {
     let month = formatedDate.getMonth();
     const year = formatedDate.getFullYear();
 
-    day = Number(day + formatDay(day));
-    month = Number(formatedDate.toLocaleString("en-us", { month: "long" }));
+    const dayString = day + formatDay(day);
+    const monthString = formatedDate.toLocaleString("en-us", { month: "long" });
 
-    return month + " " + day + ", " + year;
+    return monthString + " " + dayString + ", " + year;
   };
 
   const formatDay = (day) => {

@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const CustomH2 = ({ children }) => {
-    return (
-        <h2 className="text-green-500 mb-4 mt-16 scroll-m-6">
-            { children }
-        </h2>
-    );
-}
+  return <h2 className="text-green-500 mb-4 mt-16 scroll-m-6">{children}</h2>;
+};
 
 export default CustomH2;

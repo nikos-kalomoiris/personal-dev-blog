@@ -96,8 +96,8 @@ const Index: FC<Props> = ({ posts }) => {
       <div className="app-container">
         <h1 className="mb-2">Dev Blog</h1>
         <h4 className="mb-6">Nick Kalomoiris dev blog.</h4>
-        <div className="flex justify-between md:flex-nowrap sm:flex-wrap-reverse xs:flex-wrap-reverse">
-          <div className="md:w-1/3 sm:w-full xs:w-full">
+        <div className="flex justify-between md:flex-nowrap xs:mb-0 xs:flex-wrap">
+          <div className="w-full mb-4 sm:w-1/3">
             <Sidebar
               tags={tags}
               onTagSelection={onTagSelectionHandler}

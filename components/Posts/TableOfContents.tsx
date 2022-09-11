@@ -32,7 +32,7 @@ const TableOfContents = () => {
   }, []);
 
   return (
-    <nav className="sticky top-3 h-full w-80 p-4 bg-white rounded-lg shadow-md mr-4">
+    <nav className="sticky hidden top-3 h-full w-80 p-4 bg-white rounded-lg shadow-md mr-4 md:block">
       <p className="text-3xl text-center">Table of Contents</p>
       <hr className="mb-6" />
       <nav>
