@@ -8,6 +8,7 @@ import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils";
 import { useState, useEffect, FC } from "react";
 import { TagsMap } from "../components/Utils/TagsMap";
 import { Post } from "../interfaces/post.interface";
+import { ITag } from "../interfaces/tag.interface";
 
 interface Props {
   posts: Post[];
@@ -53,20 +54,24 @@ const Index: FC<Props> = ({ posts }) => {
     return tmpTagsArray;
   };
 
-  const mapTagsOptions = (tag) => {
+  const mapTagsOptions = (tag: ITag) => {
     return TagsMap.filter((tagMap) => {
-      if (tag.text === tagMap.text) {
+      if (tag.text.toUpperCase() === tagMap.text.toUpperCase()) {
         return tagMap;
       }
     })[0];
   };
 
   const onTagSelectionHandler = (tagsSelected) => {
-    if (tagsSelected.text !== currentTag) setCurrentTag(tagsSelected.text);
+    if (tagsSelected.text.toUpperCase() !== currentTag.toUpperCase())
+      setCurrentTag(tagsSelected.text);
     else setCurrentTag("all");
   };
 
-  useEffect(() => setTags(exportPostsTags(posts)), []);
+  useEffect(() => {
+    console.log(posts);
+    setTags(exportPostsTags(posts));
+  }, []);
 
   useEffect(() => {
     if (currentTag !== "all") {
@@ -75,7 +80,7 @@ const Index: FC<Props> = ({ posts }) => {
           if (post.data.tags) {
             const postTags = extractSinglePostTags(post);
             const isTagIncluded = postTags.find((tag) => {
-              if (tag.includes(currentTag)) {
+              if (tag.toUpperCase().includes(currentTag.toUpperCase())) {
                 return true;
               }
             });

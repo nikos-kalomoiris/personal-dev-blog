@@ -3,40 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-        @apply text-5xl
-    }
+  h1 {
+    @apply text-5xl;
+  }
 
-    h2 {
-        @apply text-3xl
-    }
+  h2 {
+    @apply text-3xl;
+  }
 
-    h3 {
-        @apply text-xl
-    }
+  h3 {
+    @apply text-xl;
+  }
 
-    h4 {
-        @apply text-xl
-    }
+  h4 {
+    @apply text-xl;
+  }
 
-    p {
-        @apply text-base
-    }
+  p {
+    @apply text-base;
+  }
 
-    li {
-        @apply text-base
-    }
+  li {
+    @apply text-base;
+  }
 
-    body {
-        @apply bg-gray-300 bg-[url('/pattern.svg')] bg-repeat bg-fixed
-    }
+  body {
+    @apply bg-gray-300 bg-[url('/pattern.svg')] bg-repeat bg-fixed;
+  }
 }
 
 @layer components {
-    .app-container {
-        @apply max-w-6xl mx-auto my-3 md:px-16 md:py-8 xs:px-8 xs:py-8 rounded-lg bg-white drop-shadow-md min-h-screen
-    }
-    .single-post-container {
-        @apply max-w-6xl mx-auto my-3 rounded-lg min-h-screen
-    }
+  .app-container {
+    @apply max-w-6xl mx-auto my-3 md:px-16 md:py-8 xs:px-8 xs:py-8 rounded-lg bg-white drop-shadow-md min-h-screen;
+  }
+  .single-post-container {
+    @apply max-w-6xl mx-auto my-3 rounded-lg min-h-screen;
+  }
 }
