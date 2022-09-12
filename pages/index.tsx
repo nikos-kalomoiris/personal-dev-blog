@@ -11,6 +11,7 @@ import { Post } from "../interfaces/post.interface";
 import { ITag } from "../interfaces/tag.interface";
 import { useTheme } from "next-themes";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import Moon from "moon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
@@ -24,7 +25,6 @@ const Index: FC<Props> = ({ posts }) => {
   const { theme, setTheme } = useTheme();
 
   const extractSinglePostTags = (post: Post) => {
-    console.log(post);
     return post.data.tags.split(",").map((tag: string) => tag.trim()); //Split all single post tags in an array and trim excess spaces
   };
 
@@ -73,7 +73,6 @@ const Index: FC<Props> = ({ posts }) => {
   };
 
   useEffect(() => {
-    console.log(posts);
     setTags(exportPostsTags(posts));
   }, []);
 
@@ -99,19 +98,19 @@ const Index: FC<Props> = ({ posts }) => {
       setCurrentPosts(posts);
     }
   }, [currentTag]);
-
-  const isLightTheme = theme === "light";
-
+  console.log(theme === "light");
   return (
     <>
       <div className="app-container ">
         <div className="flex justify-between">
           <h1 className="mb-2">Dev Blog</h1>
-          <button onClick={() => setTheme(isLightTheme ? "dark" : "light")}>
-            {isLightTheme ? (
-              <FontAwesomeIcon icon={faMoon} size="2x" />
-            ) : (
+          <button
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
+            {theme !== "light" ? (
               <FontAwesomeIcon icon={faSun} size="2x" />
+            ) : (
+              <img src="moon.png" alt="moon-icon" className="w-7" />
             )}
           </button>
         </div>
