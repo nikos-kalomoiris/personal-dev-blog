@@ -7,7 +7,8 @@ const Tagscomponent = ({ tags, onTagSelection, currentTag }) => {
     <div>
       <h3 className="mb-6"> Tags </h3>
       <nav className="flex flex-wrap flex-row">
-        {tags.lenght > 0 ? (
+        {console.log(tags)}
+        {tags.length > 0 ? (
           tags.map((tag: ITag) => (
             <Tag
               tag={tag}

@@ -28,13 +28,13 @@
   }
 
   body {
-    @apply bg-gray-300 bg-[url('/pattern.svg')] bg-repeat bg-fixed;
+    @apply bg-gray-300 bg-[url('/pattern.svg')] bg-repeat bg-fixed dark:bg-[url('/pattern-dark.svg')] transition-all ease-linear;
   }
 }
 
 @layer components {
   .app-container {
-    @apply max-w-6xl mx-auto my-3 md:px-16 md:py-8 xs:px-8 xs:py-8 rounded-lg bg-white drop-shadow-md min-h-screen;
+    @apply max-w-6xl mx-auto my-3 md:px-16 md:py-8 xs:px-8 xs:py-8 rounded-lg bg-white drop-shadow-md min-h-screen dark:bg-gray-800 transition-all ease-linear;
   }
   .single-post-container {
     @apply max-w-6xl mx-auto my-3 rounded-lg min-h-screen;

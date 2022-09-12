@@ -9,6 +9,9 @@ import { useState, useEffect, FC } from "react";
 import { TagsMap } from "../components/Utils/TagsMap";
 import { Post } from "../interfaces/post.interface";
 import { ITag } from "../interfaces/tag.interface";
+import { useTheme } from "next-themes";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
   posts: Post[];
@@ -18,6 +21,7 @@ const Index: FC<Props> = ({ posts }) => {
   const [tags, setTags] = useState<string[]>([]);
   const [currentTag, setCurrentTag] = useState<string>("all");
   const [currentPosts, setCurrentPosts] = useState(posts);
+  const { theme, setTheme } = useTheme();
 
   const extractSinglePostTags = (post: Post) => {
     console.log(post);
@@ -96,10 +100,22 @@ const Index: FC<Props> = ({ posts }) => {
     }
   }, [currentTag]);
 
+  const isLightTheme = theme === "light";
+
   return (
     <>
-      <div className="app-container">
-        <h1 className="mb-2">Dev Blog</h1>
+      <div className="app-container ">
+        <div className="flex justify-between">
+          <h1 className="mb-2">Dev Blog</h1>
+          <button onClick={() => setTheme(isLightTheme ? "dark" : "light")}>
+            {isLightTheme ? (
+              <FontAwesomeIcon icon={faMoon} size="2x" />
+            ) : (
+              <FontAwesomeIcon icon={faSun} size="2x" />
+            )}
+          </button>
+        </div>
+
         <h4 className="mb-6">Nick Kalomoiris dev blog.</h4>
         <div className="flex justify-between md:flex-nowrap xs:mb-0 xs:flex-wrap">
           <div className="w-full mb-4 sm:w-1/3">
